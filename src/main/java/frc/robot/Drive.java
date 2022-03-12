@@ -18,14 +18,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.math.trajectory.Trajectory;
-import edu.wpi.first.math.trajectory.TrajectoryUtil;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
-import java.io.IOException;
-import java.nio.file.Path;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -192,17 +187,8 @@ public class Drive {
     }
 
 //fdgsgsf,kjsdflkajs
-    String trajectoryJSON = "paths/three.wpilib.json";
-    Trajectory trajectory = new Trajectory();
-
-    public void pathweaverDrive() {
-        try {
-            Path trajectoryPath = Filesystem.getDeployDirectory().toPath().resolve(trajectoryJSON);
-            trajectory = TrajectoryUtil.fromPathweaverJson(trajectoryPath);
-        } catch (IOException ex) {
-            SmartDashboard.putString("broken trajectory", "Yes");
-    }
+    
 }
-
-
-}
+ 
+ 
+ 
