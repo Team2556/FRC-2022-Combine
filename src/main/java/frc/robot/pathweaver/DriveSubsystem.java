@@ -7,6 +7,7 @@ package frc.robot.pathweaver;
 
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
@@ -20,24 +21,27 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.Drive;
 
 public class DriveSubsystem extends SubsystemBase {
   // The motors on the left side of the drive.
+  Drive drive = new Drive();
+
   private final MotorControllerGroup m_leftMotors =
       new MotorControllerGroup(
-          new PWMSparkMax(Constants.lFMotorPort),
-          new PWMSparkMax(Constants.lRMotorPort));
+          new CANSparkMax(Constants.lFMotorPort, MotorType.kBrushless),
+          new CANSparkMax(Constants.lRMotorPort, MotorType.kBrushless));
 
   // The motors on the right side of the drive.
   private final MotorControllerGroup m_rightMotors =
       new MotorControllerGroup(
-          new PWMSparkMax(Constants.rFMotorPort),
-          new PWMSparkMax(Constants.rRMotorPort));
+        new CANSparkMax(Constants.rFMotorPort, MotorType.kBrushless),
+        new CANSparkMax(Constants.rRMotorPort, MotorType.kBrushless));
 
   // The robot's drive
   private final DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
-
   // The left-side drive encoder
+  
   private final Encoder m_leftEncoder =
       new Encoder(
           Constants.kLeftEncoderPorts[0],
