@@ -101,7 +101,7 @@ public class robotContainer {
             // Apply the voltage constraint
             .addConstraint(autoVoltageConstraint);
 
-    String trajectoryJSON = "paths/YourPath.wpilib.json";
+    String trajectoryJSON = "paths/trois.wpilib.json";
     Trajectory trajectory = new Trajectory();
 
     try {
