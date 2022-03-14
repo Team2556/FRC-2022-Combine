@@ -40,7 +40,25 @@ public class Constants {
 
     // Climber Constants
     public static final int winchMotorID = 9; //climber motor port 
-    
+    public static int PCMLPort = 10;
+    public static int PCMRPort = 11;
+    public static int winchMotorPort = 9;
+    public static int winchEncoderPort = 9;
+    //front drive pistons forward and reverse channel
+    public static int fDPForwardChannel = 0;
+    public static int fDPReverseChannel = 1;
+    //rear drive pistons forward and reverse
+    public static int rDPForwardChannel = 3;
+    public static int rDPReverseChannel = 2; 
+
+    //climber yellow pistons left and right
+    public static int yLForwardChannel = 3;
+    public static int yLReverseChannel = 2;
+    public static int yRForwardChannel = 0;
+    public static int yRReverseChannel = 1;
+    //clamp piston forward and reverse channel
+    public static int clampForwardChannel = 4;
+    public static int clampReverseChannel = 5;
 
     // Vision Constants
     public static final int IMG_WIDTH = 320;

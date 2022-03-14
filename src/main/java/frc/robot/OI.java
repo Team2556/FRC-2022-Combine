@@ -67,6 +67,14 @@ public class OI {
         return winchUp;
     }
 
+    boolean clampOut = false;
+    boolean clampOut(){
+        if(Xbox1.getAButtonReleased()){
+            clampOut = !clampOut;
+        }
+        return clampOut;
+    }
+
 
     //intake values
     double intakeSpeed(){
