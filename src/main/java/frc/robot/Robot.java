@@ -80,8 +80,8 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {
 
     //drive.testDrivebase();
-    drive.driveToCargo();
-    intake.intakeMotor();
+    //drive.driveToCargo();
+    //intake.intakeMotor();
 
     // switch (m_autoSelected) {
     //   case kCustomAuto:
@@ -96,14 +96,16 @@ public class Robot extends TimedRobot {
 
   /** This function is called once when teleop is enabled. */
   @Override
-  public void teleopInit() { }
+  public void teleopInit() { 
+    climber.climbInit();
+  }
 
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    drive.triDrivebase();
+    //drive.triDrivebase();
     //drive.teleDriveToCargo();
-
+    climber.climbTeleop();
     //drive.triDrivebase(); use this after limelight is tested
     //shooter.shooterMotor(); //needs to be tested
     //intake.intakeMotor(); //needs to be tested
