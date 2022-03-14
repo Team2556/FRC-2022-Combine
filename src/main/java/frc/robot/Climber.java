@@ -28,6 +28,12 @@ public class Climber {
         winchMotor.setSelectedSensorPosition(0);
     }
 
+    public void bigHooksUp(){
+        
+    }
+
+
+
     public void climbTeleop(){
         winchMotor(oi.winchSpeed());
         winchPistons(oi.winchUp());
