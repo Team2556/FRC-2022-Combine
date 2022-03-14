@@ -45,6 +45,16 @@ public class Climber {
         */
     }
 
+    public void automatedClimb(){
+        winchEncoder.reset(); //set encoder to 0
+        for (int i = 0; i < 3; i++){ //run winch twice 
+            while (winchEncoder.get() <= 5){ //only run while encoder is within range
+                winchPistons(oi.winchUp()); 
+            }}
+    
+        winchPistons(oi.winchUp()); //big hooks down 
+        clampPiston(true); 
+    }
 
     public void winchMotor(double winchSpeed){
         winchMotor.set(ControlMode.PercentOutput, winchSpeed);
@@ -58,11 +68,17 @@ public class Climber {
         if (winchUp){
             yellowLeft.set(Value.kForward);
             yellowRight.set(Value.kForward);
+            //double yellowUp = winchEncoder.get(); //get vertical distance needed
             }
         else {
             yellowLeft.set(Value.kReverse);
             yellowRight.set(Value.kReverse);
-            }
+            } //should this be limited?
+/*
+        if (winchEncoder.get() > yellowUp){ //dummy value
+            yellowLeft.set(Value.kOff);
+            yellowRight.set(Value.kOff);
+        }*/
     }
            
     public void clampPiston(boolean clampOn){
