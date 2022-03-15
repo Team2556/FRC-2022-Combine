@@ -10,10 +10,10 @@ import edu.wpi.first.math.kinematics.MecanumDriveKinematics;
 public class Constants {
     
     // Drive Constants
-    public static final int rFMotorPort = 1;
-    public static final int rRMotorPort = 3;
-    public static final int lFMotorPort = 2;
-    public static final int lRMotorPort = 4;
+    public static int rFMotorPort = 4;
+    public static int rRMotorPort = 8;
+    public static int lFMotorPort = 3;
+    public static int lRMotorPort = 1;
 
 
     public static final double kTrackWidth = 0.5588;
@@ -39,7 +39,23 @@ public class Constants {
 
 
     // Climber Constants
-    public static final int winchMotorID = 9; //climber motor port 
+    //winch talon ports and encoder
+    public static int winchMotorPort = 9;
+    public static int winchEncoderPort = 9;
+    //climber yellow pistons left and right and yellow motor
+    public static int yLForwardChannel = 3;
+    public static int yLReverseChannel = 2;
+    public static int yRForwardChannel = 0;
+    public static int yRReverseChannel = 1;
+    public static int yellowMotorPort = 5;
+    //clamp piston forward and reverse channel
+    public static int clampForwardChannel = 4;
+    public static int clampReverseChannel = 5;
+    //PCMs
+    public static int PCMLPort = 10;
+    public static int PCMRPort = 11;
+    
+    /*public static final int winchMotorID = 9; //climber motor port 
     public static int PCMLPort = 10;
     public static int PCMRPort = 11;
     public static int winchMotorPort = 9;
@@ -61,7 +77,7 @@ public class Constants {
     public static int clampReverseChannel = 5;
 
     public static int yellowMotorPort = 5; 
-
+    */
     // Vision Constants
     public static final int IMG_WIDTH = 320;
     public static final int IMG_HEIGHT = 240;
