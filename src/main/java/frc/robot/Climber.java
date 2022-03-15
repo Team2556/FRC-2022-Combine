@@ -17,8 +17,8 @@ public class Climber {
     //Drive drive = new Drive();
     OI oi = new OI();
 
-    private DoubleSolenoid yellowLeft  = new DoubleSolenoid(Constants.PCMLPort, PneumaticsModuleType.CTREPCM, Constants.yLForwardChannel, Constants.yLReverseChannel);
-    private DoubleSolenoid yellowRight = new DoubleSolenoid(Constants.PCMLPort, PneumaticsModuleType.CTREPCM, Constants.yRForwardChannel, Constants.yRReverseChannel);
+    //private DoubleSolenoid yellowLeft  = new DoubleSolenoid(Constants.PCMLPort, PneumaticsModuleType.CTREPCM, Constants.yLForwardChannel, Constants.yLReverseChannel);
+    //private DoubleSolenoid yellowRight = new DoubleSolenoid(Constants.PCMLPort, PneumaticsModuleType.CTREPCM, Constants.yRForwardChannel, Constants.yRReverseChannel);
     private DoubleSolenoid clampPiston = new DoubleSolenoid(Constants.PCMRPort, PneumaticsModuleType.CTREPCM, Constants.clampForwardChannel, Constants.clampReverseChannel); //double solenoid 4,5
     private TalonSRX winchMotor = new TalonSRX(Constants.winchMotorPort);
     private DutyCycleEncoder winchEncoder = new DutyCycleEncoder(Constants.winchEncoderPort);
@@ -26,8 +26,9 @@ public class Climber {
     RelativeEncoder yellowEncoder = yellowMotor.getEncoder();
 
     public void climbInit(){
-        yellowLeft.set(Value.kReverse);
-        yellowRight.set(Value.kReverse);
+        //yellowLeft.set(Value.kReverse);
+        //yellowRight.set(Value.kReverse);
+        yellowMotor.set(0);
         clampPiston.set(Value.kReverse);
         winchMotor.configFactoryDefault();
         winchMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
@@ -72,13 +73,20 @@ public class Climber {
     public void winchPistons(boolean winchUp){
              
         if (winchUp){
-            yellowLeft.set(Value.kForward);
-            yellowRight.set(Value.kForward);
+            //yellowLeft.set(Value.kForward);
+            //yellowRight.set(Value.kForward);
+            while (yellowMotor.get() < 1){
+                yellowMotor.set(1);
+            }
+                
             //double yellowUp = winchEncoder.get(); //get vertical distance needed
             }
         else {
-            yellowLeft.set(Value.kReverse);
-            yellowRight.set(Value.kReverse);
+            //yellowLeft.set(Value.kReverse);
+            //yellowRight.set(Value.kReverse);
+            while (yellowMotor.get() > -1){
+                yellowMotor.set(-1);
+            }
             } //should this be limited?
 /*
         if (winchEncoder.get() > yellowUp){ //dummy value
@@ -86,7 +94,9 @@ public class Climber {
             yellowRight.set(Value.kOff);
         }*/
     }
-           
+    
+
+
     public void clampPiston(boolean clampOn){
         // false is the clamps not being clamped on
         // reverse is not being clamped on
