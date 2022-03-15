@@ -2,6 +2,10 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -18,6 +22,8 @@ public class Climber {
     private DoubleSolenoid clampPiston = new DoubleSolenoid(Constants.PCMRPort, PneumaticsModuleType.CTREPCM, Constants.clampForwardChannel, Constants.clampReverseChannel); //double solenoid 4,5
     private TalonSRX winchMotor = new TalonSRX(Constants.winchMotorPort);
     private DutyCycleEncoder winchEncoder = new DutyCycleEncoder(Constants.winchEncoderPort);
+    private CANSparkMax yellowMotor = new CANSparkMax(Constants.yellowMotorPort, MotorType.kBrushless);
+    RelativeEncoder yellowEncoder = yellowMotor.getEncoder();
 
     public void climbInit(){
         yellowLeft.set(Value.kReverse);

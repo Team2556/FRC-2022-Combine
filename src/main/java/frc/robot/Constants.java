@@ -60,6 +60,8 @@ public class Constants {
     public static int clampForwardChannel = 4;
     public static int clampReverseChannel = 5;
 
+    public static int yellowMotorPort = 5; 
+
     // Vision Constants
     public static final int IMG_WIDTH = 320;
     public static final int IMG_HEIGHT = 240;
